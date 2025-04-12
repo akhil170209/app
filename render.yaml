@@ -1,12 +1,12 @@
 
 services:
   - type: web
-    name: my-python-app
-    env: python
-    region: oregon
-    plan: free
+    name: my-app
+    runtime: python
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
     startCommand: python app.py
-    pythonVersion: 3.11
+    envVars:
+      - key: SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL
+        value: "True"
